@@ -19,6 +19,7 @@ public:
         root->val+=sum;
         sum = root->val;
         dfs(root->left);
+        return;
     }
     TreeNode* bstToGst(TreeNode* root) {
         dfs(root);
