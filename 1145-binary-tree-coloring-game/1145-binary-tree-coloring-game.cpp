@@ -31,6 +31,6 @@ public:
         int minElement = min(countLeft,min(countRight,countParents));
         int midElement = n-maxElement-minElement;
         
-        return maxElement>(minElement+midElement)?true:false;
+        return maxElement>(minElement+midElement);
     }
 };
