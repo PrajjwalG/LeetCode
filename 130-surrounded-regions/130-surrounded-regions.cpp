@@ -11,10 +11,12 @@ public:
             dfs(i+1,j,board,m,n);
             
         }
+        return;
     }
     void solve(vector<vector<char>>& board) {
         int m = board.size();
         int n = board[0].size();
+        if(m<=2 && n<=2) return;
         for(int i = 0; i < m;i++)
         {
             for(int j = 0; j < n;j++)
