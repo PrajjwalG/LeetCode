@@ -14,7 +14,7 @@ public:
             else
                 count++;
         }
-        m = max(m,count);
-        return m;
+
+        return max(m,count);
     }
 };
