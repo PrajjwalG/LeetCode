@@ -15,7 +15,7 @@ public:
             num1 = nums[n/2];
             num2 = nums[n/2];
         }
-        cout << num1 << " " << num2;
+        // cout << num1 << " " << num2;
         int ans1 = 0;
         int ans2 = 0;
         for(int num:nums)
