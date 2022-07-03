@@ -21,11 +21,11 @@ public:
             hi++;
             wiggle.push_back({{lo,0},{hi,1}});
         }
-        int ans = 0;
-        for(int i = 0; i < wiggle.size();i++)
-        {
-            ans = max({ans,wiggle[i].first[0],wiggle[i].second[0]});
-        }
-        return ans;
+        // int ans = 0;
+        // for(int i = 0; i < wiggle.size();i++)
+        // {
+        //     ans = max({ans,wiggle[i].first[0],wiggle[i].second[0]});
+        // }
+        return max(wiggle[wiggle.size()-1].first[0],wiggle[wiggle.size() - 1].second[0]);
     }
 };
