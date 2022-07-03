@@ -1,31 +1,16 @@
 class Solution {
 public:
     int wiggleMaxLength(vector<int>& nums) {
-        vector<pair<vector<int>,vector<int>>> wiggle;
-        wiggle.push_back({{1,0},{1,1}});
-        int lo;
-        int hi;
-        for(int i = 1; i < nums.size();i++)
+        int n = nums.size();
+        int p = 1;
+        int v = 1;
+        for(int i = 1; i < n;i++)
         {
-            int n = wiggle.size();
-            lo = 0;
-            hi = 0;
-            for(int j = 0; j < n;j++)
-            {
-                if(wiggle[j].second[1] == 1 and nums[j] > nums[i])
-                    lo = max(lo,wiggle[j].second[0]);
-                if(wiggle[j].first[1] == 0 and nums[j] < nums[i])
-                    hi = max(hi,wiggle[j].first[0]);
-            }
-            lo++;
-            hi++;
-            wiggle.push_back({{lo,0},{hi,1}});
+            if(nums[i] > nums[i-1])
+                p = v+1;
+            else if(nums[i] < nums[i-1])
+                v = p+1;
         }
-        // int ans = 0;
-        // for(int i = 0; i < wiggle.size();i++)
-        // {
-        //     ans = max({ans,wiggle[i].first[0],wiggle[i].second[0]});
-        // }
-        return max(wiggle[wiggle.size()-1].first[0],wiggle[wiggle.size() - 1].second[0]);
+        return max(p,v);
     }
 };
