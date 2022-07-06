@@ -8,7 +8,7 @@ public:
         {
             sum+=nums[i];
             if(mp.find(sum%k) == mp.end())mp[sum%k] = i;
-            else if(i - mp[sum%k] >=2) return true;
+            else if( i - mp[sum%k] >=2) return true;
             if(sum%k == 0 and i>=1) return true;
         }
         return false;
