@@ -1,10 +1,10 @@
 class Solution {
 public:
     bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
-        map<long long,vector<int>>mp;
+        map<long long,set<int>>mp;
         for(int i = 0; i < nums.size();i++)
         {
-            mp[nums[i]].push_back(i);
+            mp[nums[i]].insert(i);
         }
         for(int i = 0; i < nums.size();i++)
         {
@@ -17,8 +17,8 @@ public:
                 int loo = i-k;
                 int hii = i+k;
                 
-                auto lowB = lower_bound(index.begin(),index.end(), loo);
-                auto uppB = upper_bound(index.begin(),index.end(), hii);
+                auto lowB = index.lower_bound(loo);
+                auto uppB = index.upper_bound(hii);
                 for(auto itt = lowB; itt!=uppB;++itt)
                 {
                     int m = *itt;
