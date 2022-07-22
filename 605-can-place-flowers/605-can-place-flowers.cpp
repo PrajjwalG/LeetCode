@@ -21,7 +21,7 @@ public:
                     i+=2;
                 }
             }
-            cout << i << " ";
+            // cout << i << " ";
         }
         return n == 0;
     }
