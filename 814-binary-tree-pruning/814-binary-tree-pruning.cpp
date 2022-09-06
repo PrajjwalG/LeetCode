@@ -11,19 +11,16 @@
  */
 class Solution {
 public:
-    bool solve(TreeNode* root)
-    {
-        if(root == NULL) return false;
-        bool lh = solve(root->left);
-        bool rh = solve(root->right);
-        
-        if(!lh) root->left = NULL;
-        if(!rh) root->right = NULL;
-        return root->val or lh or rh;
-    }
     TreeNode* pruneTree(TreeNode* root) {
-        bool t = solve(root);
-        if(!t) return NULL;
-        return root;
-    }
+    
+    if(!root) return root;
+    
+    root->left = pruneTree(root->left);       //postorder traversal
+    root->right = pruneTree(root->right);
+    
+    if(root->val == 0 && !root->left && !root->right){    //if root->val is 0, then check if it's 
+        return NULL;                                      //leftSubtree and rightSubtree exists or not
+    }                                                     //if not return NULL
+    return root;
+}
 };
