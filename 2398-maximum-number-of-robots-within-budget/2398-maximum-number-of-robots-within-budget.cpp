@@ -1,23 +1,18 @@
 class Solution {
 public:
-    typedef long long ll;
-    int maximumRobots(vector<int>& ct, vector<int>& rc, long long budget) 
-	{
-        multiset<int> ms;
-        ll start=0,end=0,ans=0,n=ct.size(),s=0;
-        while(end<n)
-		{
-            s+=rc[end];
-            ms.insert(ct[end++]);
-            ll val = (*ms.rbegin())+(end-start)*s;
-            while(val>budget)
-			{
-                s-=rc[start];
-                ms.erase(ms.find(ct[start++]));
-                val =ms.empty()?0 : (*ms.rbegin())+(end-start)*s;
+    int maximumRobots(vector<int>& times, vector<int>& costs, long long budget) 
+    {
+        long long i = 0, j, sum = 0, n = times.size();
+        multiset<int> s;
+        for (int j = 0; j < n; ++j) {
+            sum += costs[j];
+            s.insert(times[j]);
+            if (*rbegin(s) + sum * (j - i + 1) > budget) {
+                cout << costs[i] << " ";
+                sum -= costs[i];
+                s.erase(s.find(times[i++]));
             }
-            ans=max(ans,end-start);
         }
-        return ans;
+        return n - i;
     }
 };
