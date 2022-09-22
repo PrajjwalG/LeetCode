@@ -1,14 +1,16 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        stringstream ss(s);
-        string t, ans;
-        
-        while (getline(ss, t, ' ')) {
-            reverse(t.begin(), t.end());
-            ans += t + ' ';
+        int i=0;
+        for(int j=0;j<s.length();j++)
+        {
+            if(s[j]==' ')
+            {
+                reverse(s.begin()+i,s.begin()+j);
+                i=j+1;
+            }
         }
-        // We will take substring of one less size as there will be space after last word which is not required.
-        return ans.substr(0, ans.size() - 1); 
+        reverse(s.begin()+i,s.end());
+        return s;
     }
 };
