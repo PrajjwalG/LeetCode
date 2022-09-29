@@ -1,23 +1,23 @@
-bool sort1(pair<int,int>p1,pair<int,int>p2)
-{
-   if(p1.first==p2.first)
-       return p1.second<p2.second;
-    return p1.first<p2.first;
-}
 class Solution {
 public:
-    
-    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
-        vector<int>ans;
-        vector<pair<int,int>>v;
-        for(int i=0;i<arr.size();i++)
-        {
-            v.push_back({abs(arr[i]-x),arr[i]});
+    vector<int> findClosestElements(vector<int>& arr, int k, int x1) {
+        priority_queue<pair<int, int>> pq;
+        for(auto x: arr){
+            // pq.push(abs(x1-x));
+            pq.push({(abs(x1-x)), x});
+            if(pq.size()>k){
+                // cout<<pq.top().second<<endl;
+                pq.pop();
+            }
+
         }
-        sort(v.begin(),v.end(),sort1);
-        for(int i=0;i<k;i++)
-            ans.push_back(v[i].second);
-        sort(ans.begin(),ans.end());
-        return ans;
+        vector<int> res;
+        while(pq.size()){
+            // cout<<;
+            res.push_back(pq.top().second);
+            pq.pop();
+        }
+        sort(res.begin(), res.end());
+        return res;
     }
 };
