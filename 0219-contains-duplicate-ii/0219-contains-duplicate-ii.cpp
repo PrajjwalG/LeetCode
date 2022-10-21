@@ -5,17 +5,13 @@ public:
         
         for(int i = 0; i < nums.size();i++)
         {
-            if(mp[nums[i]] == 0)
+            if(mp.count(nums[i]))
             {
-                mp[nums[i]] = i+1;;
-            }
-            else
-            {
-                if(abs(mp[nums[i]] - (i+1)) <=k)
+          
+                if(abs(mp[nums[i]] - i) <=k)
                     return true;
-                else
-                    mp[nums[i]] = i+1;
             }
+            mp[nums[i]] = i;
         }
         return false;
     }
